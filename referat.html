@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Адаптивни изображения </title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+        <script src="javascript/js_code.js"></script>
+        <header>
+            <img src="light-mode.png" alt="светъл режим" width="115" height="53" loading="lazy"
+            id="change-image" onclick="changeImage()">
+
+        </header>
+
+        <nav>
+            <ul>
+                <li> <a class="nav-content" href="#navigation-bar-1"> Какво са адаптивни изображения? </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-2"> Как се реализира смяната от браузъра? </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-3"> Дескриптори за ширина </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-4"> Дескриптори за плътност </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-5"> Picture елементът </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-6"> CSS и медийни заявки </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-7"> Пример за адаптивно изображение </a> </li>
+                <li> <a class="nav-content" href="#navigation-bar-8"> Литература и използвани материали </a> </li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+        <h1> Адаптивни изображения </h1>
+
+        <h4> <i> Изготвил: Димитър Калмадански, ФН 81758 </i> </h4>
+
+        <h2 id="navigation-bar-1"> Какво са адаптивни изображения? </h2>
+        
+        <p>
+            Адаптивните изображения са по-общо част от т.нар. <b>„адаптивен дизайн“</b> в разработката на уебстраници.
+            Идеята е да се променя изображението, така че да отговаря на различията в екраните на разнообразни
+            устройства – мобилни телефони, таблети, лаптопи, настолни компютри и т.н.
+        </p>
+
+        <p>
+            По-конкретно – изображенията могат да си променят размера, да се показват части от тях, когато има смисъл,
+             а може и да се сменя самото изображение изцяло в зависимост от устройството.
+        </p>
+
+        <p>
+            <sup> <a href="#literature-source-1"> [1] </a> </sup>Да разгледаме пример, за да разберем нуждата от такъв дизайн. Следното изображение на Apple часовник би имало 
+            размер <b>5144 на 1698 пиксела</b> на голям дисплей с висока плътност на пикселите като <b>iMac</b>:
+        </p>
+
+        <figure>
+            <img src="img/apple-watch.png" alt="Apple часовник" width="800" height="264" loading="lazy">
+            <figcaption>Фигура 1. Apple часовник</figcaption>
+        </figure>
+
+        <p>
+            Ако трябва да го визуализираме на дисплей с размер <b>320 на 240 пиксела</b> (като на <b>Blackberry Curve 9310</b> например), 
+            ще е нужно да намалим размера му. Иначе потребителят може да се наложи да сваля изображение, което е прекалено 
+            тежко за паметта, с която разполага на устройството.
+        </p>
+        
+        <p>
+            Когато говорим за адаптивни изображения, искаме да предоставим на браузъра множество източници на изображения, които 
+            зависят от плътността на пикселите, размера на изображението и т.н.
+        </p>
+        
+        <p>
+            Класическият елемент в HTML <b>img</b> има ограничени възможности – може само 1 източник на изображение да се подаде:<br>
+            <div>
+                <code>
+                    &lt;img src="жираф.jpg" alt="жираф"&gt;
+                </code>
+                 <div class="code-caption">Код 1. Пример за img елемента </div>
+            </div>
+        </p>
+
+        <p>
+            Има различни случаи на употреба, при които се ползват различни решения за промяната на изображенията. Ще разгледаме 2 основни случая:
+        </p>
+
+        <p>
+            &bull; Промяна на резолюцията <br>
+            Промяната на резолюцията е най-честият случай на употреба – всеки сценарий, в който просто искаме да ползваме 
+            различни размери на едно и също изображение. Не променяме съдържанието или съотношението между височина и ширина.
+        </p> 
+
+        <figure>
+            <img src="img/resolution-switching.png" alt="пример за промяна на резолюцията" width="800" height="450"
+            loading="lazy">
+            <figcaption>Фигура 2. Пример за промяна на резолюцията</figcaption>
+        </figure>
+
+        <p>
+            &bull; Промяна на художественото направление <br>
+        Когато искаме да променим самото съдържание или съотношението между височина и ширина на изображението, това може да
+         се нарече „промяна на направлението“.
+        </p>
+
+        <p>
+            Например, следната снимка на Обама в завод на Крайслер, представена на голям екран, дава информация къде се намира
+            той:
+        </p>
+
+        <figure>
+            <img src="img/obama-chrysler.png" alt="снимка на Обама в завод на Крайслер, голям размер" width="500" height="333"
+            loading="lazy">
+            <figcaption>Фигура 3. Снимка на Обама в завод на Крайслер, голям размер</figcaption>
+        </figure>
+
+        <p>
+            Има смисъл да се използва такъв размер, понеже автомобилът на заден план се вижда сравнително добре. Това ни помага 
+            да разберем къде се е случило събитието и е полезно. Когато обаче преминем на малък екран и просто сменим размера, 
+            запазвайки всичко останало:
+        </p>
+
+        <figure>
+            <img src="img/obama-chrysler-small.png" alt="снимка на Обама в завод на Крайслер, малък размер" width="100" height="67"
+            loading="lazy">
+            <figcaption>Фигура 4. Снимка на Обама в завод на Крайслер, малък размер</figcaption>
+        </figure>
+
+        <p>
+            В този размер едвам можем да разпознаем кой е човекът – дори не можем да видим лицето му добре. Има повече смисъл
+             да „махнем“ това, което е на фона, и да покажем само човекът. Размерът не се променя, но вече сме се фокусирали 
+             върху друга част от изображението:
+        </p>
+
+        <figure>
+            <img src="img/obama-chrysler-cropped.png" alt="снимка на Обама в завод на Крайслер, малък размер и изрязана" width="100" height="67"
+            loading="lazy">
+            <figcaption>Фигура 5. Снимка на Обама в завод на Крайслер, малък размер и изрязана</figcaption>
+        </figure>        
+
+        <br>
+
+        <p>
+            Друг пример можем да видим със сайта на <b>CB2</b>, където имаме 3 изображения, логота и текст на голям екран:
+        </p>
+
+        <figure>
+            <img src="img/cb2-big.png" alt="сайтът на CB2 на голям екран" width="870" height="461" loading="lazy">
+            <figcaption>Фигура 6. Сайтът на CB2 на голям екран</figcaption>
+        </figure> 
+
+        <p>
+            Ако просто променим размера на <b>320 пиксела</b> ширина, текстът няма да е четим:
+        </p>
+
+        <figure>
+            <img src="img/cb2-small.png" alt="сайтът на CB2 на малък екран" width="320" height="170" loading="lazy">
+            <figcaption>Фигура 7. Сайтът на CB2 на малък екран</figcaption>
+        </figure> 
+
+        <p>
+            В случая ето как са подходили създателите на сайта – в мобилната версия е премахнато едно изображение и излишният
+             текст, променем е размерът на изображенията, за да са по-високи, както и тяхното разположение на страницата:
+        </p>
+
+        <figure>
+            <img src="img/cb2-adaptive.png" alt="сайтът на CB2, адаптиран за мобилно устройство" width="450" height="381"
+            loading="lazy">
+            <figcaption>Фигура 8. Сайтът на CB2, адаптиран за мобилно устройство</figcaption>
+        </figure> 
+
+        <br>
+
+        <h2 id="navigation-bar-2"> Как се реализира смяната от браузъра? </h2>
+
+        <p>
+            Сега като разбрахме какво представляват адаптивните изображения, възниква въпросът как браузърът променя 
+            изображенията в зависимост от характеристиките на екрана.
+        </p>
+
+        <p>
+            <sup> <a href="#literature-source-2"> [2] </a> </sup>Има много неща, които можем да направим, за да променим поведението на изображенията при зареждане в браузъра. 
+            Например за <b>img</b> елемента в CSS можем да зададем
+        </p>
+
+        <code>
+            img {
+            <br>max-inline-size: 100%;
+            <br>block-size: auto;
+            <br>}
+        </code>
+        <div class="code-caption">Код 2. Пример за max-inline-size </div>
+
+        <p>
+            Свойството <b>max-inline-size</b> с тази стойност казва, че изображенията никога не трябва да се показват в размер по-голям от
+             този на съдържащия ги елемент. Стойност <i>auto</i> на <b>block-size</b> означава, че съотношението височина-ширина ще се запази при 
+             преоразмеряване.
+        </p>
+
+        <p>
+            Така браузърът ще намали размера на изображение, за да се вижда цялото на екрана, а не само част от него.
+        </p>
+
+        <figure>
+            <img src="img/max-inline-size-example.png" alt="изображение, което се вижда цялото на екрана" width="617" height="589"
+            loading="lazy">
+            <figcaption>Фигура 9. Пример за изображение, което се вижда изцяло на екрана след промяна</figcaption>
+        </figure>  
+        
+        <p>
+            Добре е да се зададе височината и ширината на изображение, ако са ни известни. Така браузърът ще отдели място за 
+            тях при зареждане и ако има включен текст, той няма да промени позицията си впоследствие.
+        </p>
+
+        <code>
+            &lt;img
+            <br>src="снимка.png"
+            <br>alt="описание на изображението"
+            <br>width="300"
+            <br>height="200"&gt;
+        </code>
+        <div class="code-caption">Код 3. Задаване на width и height на изображение</div>
+
+        <p>
+            Без зададен размер:
+        </p>
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/tcFciHGuF3MxnTr1y5ue01OGLBn2/WOQn6K6OQcoElRw0NCkZ.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 1. Изместване на текста след зареждане на изображение </div>
+        </section>
+
+        <p>
+            Със зададен размер:
+        </p>
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/tcFciHGuF3MxnTr1y5ue01OGLBn2/sFxDb36aEMvTPIyZHz1O.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 2. Изместване на текста предварително </div>
+        </section>
+
+        <p>
+            Можем да задаваме и дали изображение да се зарежда в зависимост от това дали потребителят е стигнал до мястото му 
+            на страницата. При зададено <b>„loading="lazy"</b> няма да се зареди докато не стигнем до него:
+        </p>
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/jazsyaOjXfHS0g8yUijR.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 3. Мързеливо зареждане на изображения </div>
+        </section>
+
+        <p>
+            Дори и при настроено свойство <b>„max-inline-size: 100%“</b> пак ще се наложи да се свалят големи снимки на устройства с малки 
+            екрани. Ако имаме различни размери на една и съща снимка, можем да ги подадем на браузъра със свойството srcset.
+        </p>
+
+        <p id="navigation-bar-3">
+            За целта се ползват дескриптори за ширина, това са метаданни за изображението. Един <b>w</b> е един пиксел на екрана:
+        </p>
+
+        <code>
+        ...
+            <br>srcset="малка-снимка.png 300w,
+            <br>средна-снимка.png 600w,
+            <br>голяма-снимка.png 1200w"&gt;
+        </code>
+        <div class="code-caption">Код 4. Ползване на дескриптори за ширина </div>
+
+        <p>
+            Браузърът ще замени изображението с един от изброените варианти в <b>srcset</b> – по този начин той допълва <b>src</b>, който 
+            задължително трябва да присъства.
+        </p>
+
+        <p>
+            За да кажем в кои случаи да се ползва съответният вариант, трябва да използваме и <b>sizes</b> свойството за условията:
+        </p>
+        
+        <code>
+            ...
+            <br>srcset="малка-снимка.png 300w,
+            <br>средна-снимка.png 600w,
+            <br>голяма-снимка.png 1200w"
+            <br>sizes="(min-width: 66em) 33vw,
+            <br>(min-width: 44em) 50vw,
+            <br>100vw"&gt;
+        </code>
+        <div class="code-caption">Код 5. Ползване на sizes свойството </div>
+
+        <p>
+            Em е мерна единица, която има смисъл на големина спрямо избрания размер на шрифта. Ако шрифтът е 16 пиксела, 
+            тогава 1em = 16px, 2em = 32px и т.н.
+        </p>
+
+        <p>
+            <b>Viewport width</b>, съкратено <i>vw</i>, (ширина на прозореца за изглед, видимата част от една страница за потребителя) задава 
+            процента, който заема изображението от страницата спрямо екрана.
+        </p>
+
+        <p>
+            В случая задаваме за екрани поне <b>66em</b> широки изображението да заема <b>33%</b> от страницата, такива с ширина поне <b>44em</b> 
+            – половината от страницата, а по-малките – цялата страница.
+        </p>
+
+        <p>
+            Това означава, че най-голямата снимка няма задължително да се използва за най-широкия екран. Широк прозорец на 
+            браузъра, който може да показва съдържание на няколко колони, ще използва снимка, вместваща се в една колона. Тя 
+            може да се окаже по-малка от такава, която би се използвала на по-тесен екран.
+        </p>
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/MkUAq5XQyjlUXLvkT4jL.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 4. Промяна на размера на изображения спрямо ширина на екрана </div>
+        </section> 
+
+        <p id="navigation-bar-4">
+            Има още една ситуация, в която може да искаме да предоставим различни версии на едно и също изображение. Някои 
+            устройства имат дисплеи с висока плътност. На дисплей с двойна плътност може да сложим 2 пиксела 
+            информация на мястото на 1. Тогава изображенията няма да изглеждат замъглени на този тип дисплей.
+        </p>
+
+        <p>
+            Ще използваме дескриптора за плътност, за да опишем плътността на пикселите на дадено изображение в зависимост от 
+            използваното в <b>src</b> свойството. Дескрипторът е число, последвано от буквата <b>x</b>: 1x, 2x и т.н.
+        </p>
+
+        <code>
+            &lt;img
+            <br>src="малка-снимка.png"
+            <br>alt="описание"
+            <br>width="300"
+            <br>height="200"
+            <br>loading="lazy"
+            <br>decoding="async"
+            <br>srcset="малка-снимка.png 1x,
+            <br>средна-снимка.png 2x,
+            <br>голяма-снимка.png 3x"&gt;
+        </code>
+        <div class="code-caption">Код 6. Дескриптор за плътност </div>
+
+
+        <p>
+            Ако <i>малка-снимка.png</i> е <b>300 на 200 пиксела</b>, а <i>средна-снимка.png</i> е <b>600 на 400 пиксела</b>, можем да сложим <b>2x</b> след него.
+        </p>
+
+        <p>
+            <u>Важно е да се отбележи, че могат да се позлват само дескриптори за ширина или дескриптори за плътност, но не и 
+            двете едновременно.</u>
+        </p>
+        
+        <br>
+
+        <h2 id="navigation-bar-5"> Picture елементът </h2>
+
+        <p>
+            <sup> <a href="#literature-source-3"> [3] </a> </sup>За да можем напълно да променим изображение, ще ни трябва и <b>picture</b> елементът. По същия начин както <b>srcset</b> допълва <b>src</b>,
+             така и <b>picture</b> елементът допълва <b>img</b>. <b>Picture</b> елементът е като обвивка на <b>img</b>, без да включим <b>img</b> няма да работи <b>picture</b>:
+        </p>
+
+        <code>
+            &lt;picture&gt;
+            <br>&lt;img src="image.jpg" alt="описание на изображението"&gt;
+            <br>&lt;/picture&gt;
+        </code>
+        <div class="code-caption">Код 7. Пример с picture елемента </div>
+
+        <p>
+            Можем да определим множество <b>source</b> елементи в <b>picture</b> елемент, всеки от тях имащ свое собствено <b>srcset</b> свойство. 
+            Браузърът изпълнява първото възможно.
+        </p>
+
+        <code>
+            &lt;picture&gt;
+            <br>&lt;source srcset="снимка.avif" type="image/avif"&gt;
+            <br>&lt;source srcset="снимка.webp" type="image/webp"&gt;
+            <br>&lt;img src="снимка.jpg" alt="описание" 
+            <br>width="300" height="200" loading="lazy" decoding="async"&gt;
+            <br>&lt;/picture&gt;
+        </code>
+        <div class="code-caption">Код 8. Подаване на различни източници на изображение </div>
+
+        <p>
+            В случая имаме 3 изображения, от които браузърът трябва да избере. Първото е във формат <i>AVIF</i>. Ако може да визуализира 
+            такива изображения, ще избере това. Ако не, ще се опита да покаже това във <i>WebP</i> формат. Ако и това не е възможно, ще 
+            трябва да използва описаното в <b>src</b> свойството на <b>img</b>, което си е в <i>JPEG</i> формат.
+        </p>
+
+        <p>
+            Можем да искаме да променим размера на изображение в зависимост от ширината на екрана. За целта ще използваме <b>media</b>
+            свойството, където се поместват т. нар. „медийни заявки“.
+        </p>
+
+        <code>
+            &lt;picture&gt;
+            <br>&lt;source srcset="голямо.png" media="(min-width: 75em)"&gt;
+            <br>&lt;source srcset="средно.png" media="(min-width: 40em)"&gt;
+            <br>&lt;img src="малко.png" alt="описание" 
+            <br>width="300" height="200" loading="lazy" decoding="async"&gt;
+            <br>&lt;/picture&gt;
+        </code>
+        <div class="code-caption">Код 9. Използване на медийни заявки в picture елемента </div>
+
+        <p>
+            Така казваме на браузъра, че ако ширината на прозореца за изглед е по-голяма от <b>75em</b>, трябва да използва голямата 
+            снимка; между <b>40em и 75em</b> – средната снимка, а под <b>40em</b> – малката снимка.
+        </p>
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/tXME65OZikEMwvPAEgX2.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 5. Различни размери на изображение в picture елемента </div>
+        </section> 
+
+        <p>
+            Това е различно от използването на <b>srcset</b> и <b>sizes</b> свойствата на <b>img</b> елемента. В онзи случай „подсказваме“ на браузъра 
+            какво трябва да направи. Елементът <b>source</b> е по-скоро команда, а не подсказка.
+        </p>
+
+        <br>
+
+        <p>
+            Ако просто искаме да представим едно и също изображение в различни размери, <b>srcet</b> е най-добрата опция. Но ако изображение
+             не изглежда добре в по-малки размери, можем да пробваме да го изрежем.
+        </p>
+
+        <p>
+            Различните изображения могат да имат различно съотношение между ширина и височина, за да са по-подходящи в съответния случай.
+             Например, в мобилен браузър можем да представим изрязаното изображение във височина и да намалим ширината, докато на настолен
+              компютър то да е по-широко и ниско.
+        </p>
+
+        <p>
+            Ето един пример на изображение, което си променя съдържанието в зависимост от ширината на екрана. Трябва да се добавят <b>width</b> и 
+            <b>height</b> като свойста на всеки <b>source</b> елемент.
+        </p>
+
+        
+            <code>
+                &lt;picture&gt;
+                <br>&lt;source srcset="пълен-размер.jpg" media="(min-width: 75em)" width="1200" height="500"&gt;
+                <br>&lt;source srcset="нормален-размер.jpg" media="(min-width: 50em)" width="800" height="400"&gt;
+                <br>&lt;img src="изрязано.jpg" alt="описание на изображение" width="400" height="400" loading="eager" decoding="sync"&gt;
+                <br>&lt;/picture&gt;
+                </code>
+                <div class="code-caption">Код 10. Определяне на височина и ширина в picture елемента </div>
+        
+
+        <section>
+            <video controls>
+                <source src="https://storage.googleapis.com/web-dev-uploads/video/KT4TDYaWOHYfN59zz6Rc0X4k4MH3/WZLJGIUHqlP1j9s9aJaj.mp4"
+                type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
+            <div class="video-caption">Видео 6. Промяна на изображение в picture елемента </div>
+        </section>
+
+        <p>
+            Не трябва да се забравя, че не може да се променя <b>alt</b> свойството в зависимост от източника на изображението. Налага се да се 
+            включи <b>alt</b> свойство, описващо и цялото изображение, и изрязаното.
+        </p>
+
+        <p>
+            В голяма част от случаите няма да ни се наложи да използваме <b>picture</b> елемента за адаптивни изображения – <b>srcset</b> и <b>sizes</b>
+            свойствата на <b>img</b> елемента ще покрият голяма част от случаите на практика. Но когато се налага по-добър контрол и прецизност,
+             <b>picture</b> елементът е мощно оръжие.
+        </p>
+
+        <br>
+
+        <h2 id="navigation-bar-6"> CSS и медийни заявки </h2>
+
+        <p>
+            Ако искаме да използваме CSS за промяна на резолюцията на изображения, можем да приложим т.нар. "медийни заявки". Ето и пример за такава:
+        </p>
+
+        <figure>
+            <img id="css-media-image" src="img/media-query-resolution.webp" alt="пример за смяна на резолюция чрез медийна заявка" width="1600" height="900" loading="lazy">
+            <figcaption>Фигура 10. Смяна на резолюция чрез CSS и медийна заявка</figcaption>
+        </figure> 
+
+        <p>
+            Малко за синтаксиса:<br>
+            <ul>
+                <li>
+                    <i>(-webkit-min-device-pixel-ratio: 2)</i> => ако устройството поддържа плътност на дисплея 2х (за повече информация за записа виж обяснението 
+                    под Видео 4)<br>
+                </li>
+                
+                <li>
+                    <i>min-resolution</i> => устройството трябва да поддържа поне следната резолюция<br>
+                </li>
+
+                <li>
+                    <i>192dpi</i> => dpi (dots per inch) означава "точки на инч"<br>
+                </li>
+            </ul>
+        </p>
+
+        <p>
+            Ако тези условия са удовлетворени, ще се изпълни заявката в къдравите скоби {}, преднзначена за дисплеи с висока плътност. В случая сме използвали 
+            минимална резолюция, но допълващото свойство <b>max-resolution</b> също може да бъде приложено, дори и в комбинация.
+        </p>
+
+        <p>
+            Други начини за задаване на резолюцията в заявката са:
+            <ul>
+                <li>
+                    <b>dpcm</b> (dots per centimetre) - точки на сантиметър
+                </li>
+
+                <li>
+                    <b>dppx</b> (dots per px unit) - точки на единица пиксел
+                </li>
+            </ul>
+
+        Пояснение за последното - <b>1 dppx</b> се равнява на <b>96 dpi</b>, понеже CSS пиксел е прието да е 1/96 от инча (~0.26 милиметра).<br>
+        За да разберете повече за медийните заявки и техните възможности, понеже не се ползват само за изображения, можете да прочетете тук:
+        <a href="https://web.dev/learn/design/media-queries/" target="_blank"> https://web.dev/learn/design/media-queries/ </a>
+
+        </p>
+
+        <br>
+
+        <h2 id="navigation-bar-7"> Пример за адаптивно изображение</h2>
+
+        <figure>
+            <picture>
+                <source srcset="img/kitten_large.png" media="(min-width: 70em)" width="650" height="285">
+                <source srcset="img/kitten-medium.png" media="(min-width: 62em)" width="465" height="285">
+                <img src="img/kitten-small.png" alt="малко коте" width="330" height="285" loading="eager" decoding="sync">
+            </picture>
+            <figcaption>Фигура 10. Променяща се котка</figcaption>
+        </figure>
+
+        <p> Спрямо ширината на екрана на устройството, на което се отваря сайтът, ще се промени изображението.
+            Чрез "Инструменти за програмисти/разработчици" в браузъра могат да се видят различните версии.
+        </p>
+
+        <hr>
+
+        <footer id="navigation-bar-8">
+            <h3> Цитирана литература</h3>
+            <div id="literature-source-1"> [1] Jason Grigsby, Responsive Images 101, Part 1: Definitions, публикувана на 16-ти март 2015 <br>
+            [<a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank"> https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>],
+            последно посетена на 2-ри декември 2022 </div>
+            <div id="literature-source-2"> [2] Responsive images [<a href="https://web.dev/learn/design/responsive-images/" target="_blank"> https://web.dev/learn/design/responsive-images/ </a>],
+             последно посетена на 2-ри декември 2022 </div>
+            <div id="literature-source-3"> [3] The picture element [<a href="https://web.dev/learn/design/picture-element/" target="_blank"> https://web.dev/learn/design/picture-element/ </a>], 
+            последно посетена на 2-ри декември 2022 </div>
+
+            <h3> Списък с фигури</h3>
+            <ul>
+                <li>
+                    Фигура 1. Apple часовник <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                    https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 2. Пример за промяна на резолюцията <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                    https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 3. Снимка на Обама в завод на Крайслер, голям размер <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                    https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 4. Снимка на Обама в завод на Крайслер, малък размер <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 5. Снимка на Обама в завод на Крайслер, малък размер и изрязана <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+                
+                <li>
+                    Фигура 6. Сайтът на CB2 на голям екран <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 7. Сайтът на CB2 на малък екран <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 8. Сайтът на CB2, адаптиран за мобилно устройство <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Фигура 9. Пример за изображение, което се вижда изцяло на екрана след промяна <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Фигура 10. Променяща се котка <a href="https://googlechrome.github.io/samples/picture-element/" target="_blank">
+                        https://googlechrome.github.io/samples/picture-element/ </a>
+                </li>
+            </ul>
+
+            <h3> Списък с видеа</h3>
+            <ul>
+                <li>
+                    Видео 1. Изместване на текста след зареждане на изображение <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Видео 2. Изместване на текста предварително <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Видео 3. Мързеливо зареждане на изображения <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Видео 4. Промяна на размера на изображения спрямо ширина на екрана <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Видео 5. Различни размери на изображение в picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+
+                <li>
+                    Видео 6. Промяна на изображение в picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+            </ul>
+
+            <h3> Списък с код</h3>
+            <ul>
+                <li>
+                    Код 1. Пример за img елемента <a href="https://cloudfour.com/thinks/responsive-images-101-definitions/" target="_blank">
+                        https://cloudfour.com/thinks/responsive-images-101-definitions/ </a>
+                </li>
+
+                <li>
+                    Код 2. Пример за max-inline-size <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Код 3. Задаване на width и height на изображение <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Код 4. Ползване на дескриптори за ширина <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Код 5. Ползване на sizes свойството <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Код 6. Дескриптор за плътност <a href="https://web.dev/learn/design/responsive-images/" target="_blank">
+                        https://web.dev/learn/design/responsive-images/ </a>
+                </li>
+
+                <li>
+                    Код 7. Пример с picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+
+                <li>
+                    Код 7. Пример с picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+
+                <li>
+                    Код 8. Подаване на различни източници на изображение <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+
+                <li>
+                    Код 9. Използване на медийни заявки в picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+
+                <li>
+                    Код 10. Определяне на височина и ширина в picture елемента <a href="https://web.dev/learn/design/picture-element/" target="_blank">
+                        https://web.dev/learn/design/picture-element/ </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+    </body>
+</html
