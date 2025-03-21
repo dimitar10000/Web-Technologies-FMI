@@ -1,0 +1,83 @@
+body {
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(../images/blue_bg_image2.jpg);
+}
+
+#media-box {
+    width:600px;
+    height:250px;
+}
+
+#row {
+    display:flex;
+}
+
+#column-1,#column-2 {
+    flex:50%;
+}
+
+#media-list {
+    margin-top: 30px;
+}
+
+#media-box {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+video, audio {
+    margin-top: 20px;
+}
+
+#playlist-section {
+    margin-top: 165px;
+}
+
+#file-location-box {
+    margin-top: 20px;
+}
+
+#playlist-box {
+    margin-top: 10px;
+    width:600px;
+    height:250px;
+    font-size: 18px;
+}
+
+#playlist-add-button {
+    margin-top: 10px;
+}
+
+#playlist-control-buttons {
+    margin-top: 10px;
+}
+
+#homepage-link {
+    font-size: 20px;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top:10px;
+    margin-left:320px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+#header-label {
+    font-size: 32px;
+    margin-left: 34%;
+}
+
+.play-label {
+    margin-top:10px;
+    color:rgb(128, 17, 39);
+    height: 20px;
+    width: 700px;
+}
+
+#playlist-control-buttons label {
+    margin-left: 50px;
+    font-size:13px;
+}

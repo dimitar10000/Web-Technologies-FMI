@@ -1,0 +1,83 @@
+https://www.youtube.com/watch?v=K4TOrB7at0Y
+https://www.youtube.com/watch?v=a3ICNMQW7Ok
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=K4TOrB7at0Y","video1" , 15.3,"2023-02-02 18:47:20",2);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=a3ICNMQW7Ok","video2" , 20.7,"2023-02-02 18:40:01",1);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("0e64629c86cf0b24262122bf2a6eee23","file_example_MP3_2MG.mp3",0.000,"2023-02-02 18:27:27",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("24592cf91289a12e834af106a3b0ded2","SampleVideo_720x480_1mb.mp4",0.000,"2023-02-02 18:27:07",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("2fb57db76be547667f46283f73fdd414","file_example_WEBM_480_900KB.webm",1.507,"2023-02-02 18:47:20",1);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("40017a56c5ad9f2ed96468f9917f9dda","file_example_MP3_1MG.mp3",0.000,"2023-01-28 12:41:04",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("6210071389c450fe07b2aca5eda25371","file_example_OOG_1MG.ogg",3.299,"2023-02-02 18:51:14",1);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("83c6cad48cca888cdbad7b73c57b283d","SampleVideo_720x480_1mb.mp4",2.352,"2023-01-28 12:36:45",1);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("9d2cd2d5b8b1571b613f107af7fbed65","SampleVideo_720x480_2mb.mp4",7.376,"2023-01-30 13:00:16",2);
+	
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("e2931d4efdade7e545f208fa2b164239","file_example_MP3_2MG.mp3",16.694,"2023-01-28 12:41:07",1);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=8MH5bdnrDGQ","Argentina - all goals from FIFA World Cup Qatar 20...",0.000,"2023-02-02 10:20:11",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=ca0UTVoWCpU","Using Flex and Bison in Visual Studio",18.401,"2023-02-02 17:38:11",2);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=cDbjSyymkUY","Craziest \"Karma/Revenge\" Moments",27.151,"2023-02-02 10:51:37",3);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=fSXmyd01704","Borussia Dortmund 4-1 Real Madrid UCL Semifinal 20...",0.000,"2023-02-02 17:46:55",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=Gedyf-dG1lQ","Ein Tag in Köln | WDR Reisen",0.000,"2023-01-28 16:49:00",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=PJHtqMjrStk","Square root in 3 seconds - math trick",0.000,"2023-02-02 17:47:47",0);
+
+INSERT INTO Video (videoURL, title,timeWatched, lastWatched,viewedCount) 
+    VALUES("https://www.youtube.com/watch?v=z7WzDlanZmg","Revenge Moments in Football",13.744,"2023-02-05 11:15:34",3);
+
+
+INSERT INTO History (videoURL, title, watched,duration) 
+    VALUES("https://www.youtube.com/watch?v=K4TOrB7at0Y","video1","2023-02-02 18:40:01",10);
+
+INSERT INTO History (videoURL, title, watched,duration) 
+    VALUES("https://www.youtube.com/watch?v=K4TOrB7at0Y","video1","2023-01-20 18:40:01",10);
+
+INSERT INTO History (videoURL, title, watched,duration) 
+    VALUES("https://www.youtube.com/watch?v=K4TOrB7at0Y","video1","2022-04-01 18:40:01",10);
+
+
+INSERT INTO PlaylistYT (position,videoURL,title)
+     VALUES(0,"https://www.youtube.com/watch?v=K4TOrB7at0Y","video1");
+
+INSERT INTO PlaylistYT (position,videoURL,title)
+     VALUES(1,"https://www.youtube.com/watch?v=a3ICNMQW7Ok","video2");
+
+INSERT INTO PlaylistYT (position,videoURL,title)
+     VALUES(2,"https://www.youtube.com/watch?v=K4TOrB7at0Y","video1");
+
+INSERT INTO PlaylistLocal (position,title)
+     VALUES(0,"SampleVideo_720x480_1mb.mp4");
+
+INSERT INTO PlaylistLocal (position,title)
+     VALUES(1,"file_example_MP3_2MG.mp3");
+
+INSERT INTO PlaylistLocal (position,title)
+     VALUES(2,"file_example_MP3_2MG.mp3");
+

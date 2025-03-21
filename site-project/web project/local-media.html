@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Локални медии </title>
+    <link rel="stylesheet" href="./styles/local-styles.css">
+    <link rel="icon" href="./images/local-icon.png">
+    <script src="./scripts/play-local-file.js" type="module"></script>
+    <script src="./scripts/playlist-control-local.js" type="module"></script>
+    <script src="./scripts/download-local.js" type="module"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>-->
+</head>
+
+<body>
+    <header>
+        <label id="header-label"> <b>Локални медии</b></label>
+        <span id="homepage-link">
+            <u><a href="home.html">към началната страница</a></u>
+        </span>
+    </header>
+    
+    <section id="local-file-section">
+        <div id="row">
+            <div id="column-1">
+                <label id="video-input-label">
+                    Отворете локален видео файл:
+                </label>
+                <input id="video-input" type="file" accept="video/*" />
+
+                <div id="video-player"></div>
+                <div class="play-label"></div>
+
+                <section id="media-list">
+                    <label id="media-list-label">
+                        Заредени файлове:
+                    </label>
+
+                    <br>
+
+                    <select id="media-box" name="media-box" size="100" multiple="selected-items"></select>
+                    <br>
+                    <button type="button" id="playlist-add-button" name="playlist-add-button"> Добави в
+                        плейлист</button>
+                </section>
+            </div>
+            <br>
+
+            <div id="column-2">
+                <label id="audio-input-label">
+                    Отворете локален аудио файл:
+                </label>
+                <input id="audio-input" type="file" accept="audio/*" />
+
+                <div id="audio-player"></div>
+                <div class="play-label"></div>
+
+                <section id="playlist-section">
+                    <h2> Плейлист </h2>                    
+                    <div id="file-location-box">
+                        <label> Задайте директория на файловете:</label>
+                        <input id="location-specifier" type="text">
+
+                        <button type="button" id="download-m3u-button"> свали М3U</button>
+                    </div>
+
+                    <select id="playlist-box" name="playlist-box" size="15" multiple="selected-items"></select>
+
+                    <div id="playlist-control-buttons">
+                        <button type="button" id="move-up-button"> нагоре </button>
+                        <button type="button" id="move-down-button"> надолу </button>
+                        <button type="button" id="delete-button"> изтрий </button>
+                        <label> <b>изберете заглавия, за да преместите/изтриете </b></label>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

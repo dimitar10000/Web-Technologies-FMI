@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> YouTube медии </title>
+    <link rel="stylesheet" href="./styles/video-styles.css">
+    <link rel="icon" href="./images/youtube-icon.png">
+    <script src="./scripts/submit-form.js" type="module"></script>
+    <script src="./scripts/yt-player.js" type="module"></script>
+    <script src="./scripts/playlist-control-yt.js" type="module"></script>
+    <script src="./scripts/download-yt.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <h1> YouTube медии</h1>
+    </header>
+
+    <div id="row">
+        <div id="column-1">
+            <section id="link-section">
+                <form id="link-form">
+                    <label id="link-label" for="link-box"><b> Моля, въведете линк на видео/песен: </b></label>
+                    <input type="text" id="link-content" name="link-content">
+                    <button type="submit" id="link-button" name="link-button"> Зареди </button>
+                </form>
+            </section>
+
+            <section id="media-list">
+                <div id="media-list-label">
+                    Заредени файлове:
+                </div>
+
+                <select id="media-box" size="100" multiple></select>
+                <br>
+                <button type="button" id="playlist-add-button" name="playlist-add-button"> Добави в
+                    плейлист</button>
+            </section>
+        </div>
+
+        <div id="column-2">
+            <section id="video-section">
+                    <img id="video-placeholder-image" src="./images/video_placeholder_image.jpg" width="640" height="390">
+                    <div id="media-window"> </div>
+            </section>
+
+            <div id="homepage-link">
+                <u><a href="home.html">към началната страница</a></u>
+            </div>
+
+        </div>
+    </div>
+
+    <section id="playlist-section">
+        <h2> Плейлист </h2>
+
+        <div id="download-playlist">
+            <button type="button" id="download-html-button"> свали HTML</button>
+            <button type="button" id="download-json-button"> свали JSON</button>
+            <button type="button" id="download-txt-button"> свали TXT</button>
+        </div>
+
+        <select id="playlist-box" size="15" multiple></select>
+
+        <div id="playlist-control-buttons">
+            <label> <b>изберете заглавия, за да преместите/изтриете </b></label>
+            <button type="button" id="move-up-button"> нагоре </button>
+            <button type="button" id="move-down-button"> надолу </button>
+            <button type="button" id="delete-button"> изтрий </button>
+        </div>
+    </section>
+
+</body>
+
+</html>

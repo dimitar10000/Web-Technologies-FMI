@@ -1,0 +1,135 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Статистика за използвани медии </title>
+    <link rel="stylesheet" href="./styles/stats-styles.css">
+    <link rel="icon" href="./images/statistics.png">
+    <script src="./scripts/show-stats.js" type="module"></script>
+    <script src="./scripts/clear-tables.js" type="module"></script>
+    <script src="./scripts/show-hide-control.js"></script>
+    <script src="./scripts/download-stats.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <label id="header-label"> <b>Статистики</b></label>
+        <span id="homepage-link">
+            <u><a href="home.html">към началната страница</a></u>
+        </span>
+    </header>
+
+    <section id="statistics-section">
+
+        <button type="submit" id="clear-stats-button"> изчисти статистики </button>
+
+        <h3> Най-дълго гледани/слушани медии</h3>
+        <button type="button" id="collapsible-button"> покажи/скрий </button>
+        <button type="button" id="export-longest"> свали TXT </button>
+
+        <div id="collapsible-content">
+            <div id="load-button1">
+                <button type="button" id="load-top-button1"> Зареди топ</button>
+                <input type="text" id="top-number-longest-box" name="top-longest">
+
+                <span id="checkboxes-longest">
+                    <input type="checkbox" id="checkbox-time-longest">
+                    <input type="checkbox" id="checkbox-last-played-longest">
+                    <input type="checkbox" id="checkbox-link-longest">
+                </span>
+            </div>
+
+            <table id="longest-played-media">
+                <tr>
+                    <th>Име</th>
+                    <th>Време</th>
+                    <th>Последно отваряно</th>
+                    <th>Линк</th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <h3> Най-често гледани/слушани медии</h3>
+        <button type="button" id="collapsible-button2"> покажи/скрий </button>
+        <button type="button" id="export-played"> свали TXT </button>
+
+        <div id="collapsible-content2">
+            <div id="load-button2">
+                <button type="button" id="load-top-button2"> Зареди топ</button>
+                <input type="text" id="top-number-played-box" name="top-watched">
+
+                <span id="checkboxes-played">
+                    <input type="checkbox" id="checkbox-hits-played">
+                    <input type="checkbox" id="checkbox-last-played-played">
+                    <input type="checkbox" id="checkbox-link-played">
+                </span>
+            </div>
+
+            <table id="most-played-media">
+                <tr>
+                    <th>Име</th>
+                    <th>Посещения</th>
+                    <th>Последно отваряно</th>
+                    <th>Линк</th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <h3> История</h3>
+        <button type="button" id="collapsible-button3"> покажи/скрий </button>
+        <button type="button" id="export-history"> свали TXT </button>
+        <span id="checkboxes-history">
+            <input type="checkbox" id="checkbox-duration-history">
+            <label> Продължителност</label>
+
+            <input type="checkbox" id="checkbox-link-history">
+            <label> Линк</label>
+        </span>
+
+        <div id="collapsible-content3">
+            <div id="history-buttons">
+                <button type="button" id="clear-history-button"> изчисти история </button>
+
+                <span id="clear-buttons">
+
+                    <span id="custom-clear-section">
+                        <label> Въведете брой дни:</label>
+                        <input type="text" id="custom-history-clear-box">
+                    </span>
+
+                    <span id="radio-buttons">
+                        <input type="radio" id="history-clear-week">
+                        <label> 1 седмица</label>
+
+                        <input type="radio" id="history-clear-month">
+                        <label> 1 месец</label>
+
+                        <input type="radio" id="history-clear-year">
+                        <label> 1 година</label>
+                    </span>
+
+                    <span>
+                        <button type="button" id="clear-radio-button">X</button>
+                    </span>
+                </span>
+            </div>
+
+
+            <table id="history-table">
+                <tr>
+                    <th>Име</th>
+                    <th>Дата</th>
+                    <th>Продължителност</th>
+                    <th>Линк</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+</body>
+
+</html>

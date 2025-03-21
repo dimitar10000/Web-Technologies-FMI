@@ -1,0 +1,91 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(../images/red_bg_image.png);
+}
+
+h1 {
+    text-align: center;
+}
+
+#media-box {
+    width:600px;
+    height:250px;
+    font-size: 18px;
+}
+
+#row {
+    display:flex;
+}
+
+#column-1 {
+    flex:50%;
+    font-size: 18px;
+}
+
+#column-2 {
+    flex:50%;
+}
+
+#media-list-label {
+    margin-bottom: 10px;
+}
+
+#media-list {
+    padding-top:30px;
+}
+
+#link-label {
+    font-size:14px;
+}
+
+#link-content {
+    font-size:18px;
+    margin-left:5px;
+    width:200px;
+}
+
+#link-button {
+    font-size: 18px;
+    width:120px;
+    height:30px;
+}
+
+#playlist-box {
+    margin-top: 10px;
+    width:600px;
+    height:250px;
+    font-size: 18px;   
+}
+
+#playlist-add-button {
+    margin-top: 10px;
+}
+
+#playlist-control-buttons {
+    margin-top: 10px;
+}
+
+#playlist-control-buttons label {
+    margin-right: 50px;
+    font-size: 13px;
+}
+
+#playlist-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#homepage-link {
+    font-size: 20px;
+    text-align: right;
+    position: fixed;
+    right:20px;
+    bottom:20px;
+}
+
+#media-wrapper {
+    height: 390px;
+    min-height: 390px;
+    width: 640px;
+    min-width: 640px;
+}

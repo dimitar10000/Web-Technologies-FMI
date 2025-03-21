@@ -1,0 +1,99 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(../images/orange_bg_image.png);
+    background-size: cover;
+}
+
+#header-label {
+    margin-left: 40%;
+    font-size: 32px;
+}
+
+#homepage-link {
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top:10px;
+    margin-left:320px;
+}
+
+table,th,td {
+    width:100%;
+    text-align: center;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+table {
+    table-layout: fixed;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+th,td {
+    padding: 5px;
+}
+
+#top-number-played-box,#top-number-longest-box,#custom-history-clear-box {
+    width:50px;
+}
+
+#radio-buttons {
+    margin-left: 5px;
+}
+
+#clear-buttons {
+    margin-left: 10px;
+}
+
+#history-buttons {
+    margin-left: 640px;
+    font-size: 15px;
+}
+
+#collapsible-button,#collapsible-button2,#collapsible-button3 {
+    margin-bottom: 10px;
+}
+
+#collapsible-content,#collapsible-content2,#collapsible-content3 {
+    display: block;
+    overflow: auto;
+}
+
+#row {
+    display:flex;
+}
+
+#column-1,#column-2 {
+    flex:100%;
+}
+
+header {
+    margin-top:10px;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+#checkboxes-longest {
+    margin-left: 340px;
+}
+
+#checkbox-last-played-longest {
+    margin-left: 310px;
+}
+
+#checkbox-link-longest {
+    margin-left: 310px;
+}
+
+#checkboxes-played {
+    margin-left: 340px;
+}
+
+#checkbox-last-played-played {
+    margin-left: 310px;
+}
+
+#checkbox-link-played {
+    margin-left: 310px;
+}
